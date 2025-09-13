@@ -1,6 +1,13 @@
 import tkinter as tk
 import tkinter.font as tkFont
 import drinkMixer
+import os
+
+if os.name == "nt":
+    print("WOMP WOMP >:3")
+else:
+    print("Go ahead! :3")
+    os.system("sudo pigpiod")
 
 root = tk.Tk()
 root.title("The RasFountain")
@@ -39,4 +46,5 @@ for drinkName, btnAttribs in drinks.items():
         btns = 0
         row += 1
 
+root.protocol("WM_DELETE_WINDOW", drinkMixer.stopPumpD)
 root.mainloop()

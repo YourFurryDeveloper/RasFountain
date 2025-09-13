@@ -1,13 +1,15 @@
-import rpi.gpio as gpio
+import pigpio
 import time
 
-gpio.setmode(gpio.BCM)
-gpio.setup(23, gpio.OUT)
+pi = pigpio.pi()
+pi.set_mode(23, pigpio.OUTPUT)
 
 def mix(drinkName):
     if drinkName == "Water":
-        gpio.output(23, gpio.HIGH)
+        pi.write(23, 1)
         time.sleep(1)
-        gpio.output(23, gpio.LOW)
+        pi.write(23, 0)
         
-        gpio.cleanup()
+def stopPumpD():
+    pi.stop()
+    print("Pigpio daemon stopped")
