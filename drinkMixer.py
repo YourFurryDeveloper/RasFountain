@@ -6,15 +6,15 @@ pi.set_mode(12, pigpio.OUTPUT)
 
 def openValve():
     angle = 0
-    pulse_width = 1000000 + (angle / 180) * 1000000
-    pi.hardware_PWM(12, 50, pulse_width)  # Move servo
+    #pulse_width = 1000000 + (angle / 180) * 1000000
+    pi.hardware_PWM(12, 50, 1000000)  # Move servo
     time.sleep(0.5)                # Let it reach the position
     pi.hardware_PWM(12, 0, 0)      # Stop PWM to prevent shudder
 
 def closeValve():
     angle = 20
-    pulse_width = 1000000 + (angle / 180) * 1000000
-    pi.hardware_PWM(12, 50, pulse_width)
+    #pulse_width = 1000000 + (angle / 180) * 1000000
+    pi.hardware_PWM(12, 50, 1111111)
     time.sleep(0.5)
     pi.hardware_PWM(12, 0, 0)
 
