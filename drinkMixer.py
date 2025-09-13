@@ -13,3 +13,4 @@ def mix(drinkName):
 def stopPumpD():
     pi.stop()
     print("Pigpio daemon stopped")
+    quit()
