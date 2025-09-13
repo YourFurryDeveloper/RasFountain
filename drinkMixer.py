@@ -14,7 +14,7 @@ def openValve():
     pi.hardware_PWM(12, 0, angle_to_dutycycle(0))
 
 def closeValve():
-    pi.hardware_PWM(12, 50, angle_to_dutycycle(-20))
+    pi.hardware_PWM(12, 50, angle_to_dutycycle(20))
     pi.hardware_PWM(12, 0, angle_to_dutycycle(0))
 
 def init():
@@ -24,7 +24,7 @@ def init():
 def mix(drinkName):
     if drinkName == "Water":
         openValve()
-        time.sleep(1)
+        time.sleep(3)
         closeValve()
 
 def stopPumpD():
