@@ -10,14 +10,12 @@ def angle_to_dutycycle(angle):
     return int(min_dc + (angle / 180.0) * (max_dc - min_dc))
 
 def openValve():
-    pi.hardware_PWM(12, 50, angle_to_dutycycle(0))  # Move servo
-    #time.sleep(0.5)                # Let it reach the position
-    pi.hardware_PWM(12, 0, angle_to_dutycycle(0))      # Stop PWM to prevent shudder
+    pi.hardware_PWM(12, 50, angle_to_dutycycle(0))
+    pi.hardware_PWM(12, 0, angle_to_dutycycle(0))
 
 def closeValve():
     pi.hardware_PWM(12, 50, angle_to_dutycycle(20))
-    time.sleep(0.5)
-    pi.hardware_PWM(12, 0, 0)
+    pi.hardware_PWM(12, 0, angle_to_dutycycle(20))
 
 def init():
     pi.set_PWM_frequency(12, 50)
