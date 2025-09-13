@@ -4,17 +4,18 @@ import time
 pi = pigpio.pi()
 pi.set_mode(12, pigpio.OUTPUT)
 
+def angle_to_dutycycle(angle):
+    min_dc = 50000   # 1.0 ms pulse width
+    max_dc = 100000  # 2.0 ms pulse width
+    return int(min_dc + (angle / 180.0) * (max_dc - min_dc))
+
 def openValve():
-    angle = 0
-    #pulse_width = 1000000 + (angle / 180) * 1000000
-    pi.hardware_PWM(12, 50, 1000000)  # Move servo
+    pi.hardware_PWM(12, 50, angle_to_dutycycle(0))  # Move servo
     time.sleep(0.5)                # Let it reach the position
     pi.hardware_PWM(12, 0, 0)      # Stop PWM to prevent shudder
 
 def closeValve():
-    angle = 20
-    #pulse_width = 1000000 + (angle / 180) * 1000000
-    pi.hardware_PWM(12, 50, 1111111)
+    pi.hardware_PWM(12, 50, angle_to_dutycycle(20))
     time.sleep(0.5)
     pi.hardware_PWM(12, 0, 0)
 
