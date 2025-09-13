@@ -9,7 +9,7 @@ else:
     print("Go ahead! :3")
     os.system("sudo pigpiod")
 
-drinkMixer.closeValve()
+drinkMixer.init()
 
 root = tk.Tk()
 root.title("The RasFountain")
