@@ -5,10 +5,10 @@ pi = pigpio.pi()
 pi.set_mode(12, pigpio.OUTPUT)
 
 def openValve():
-    pi.set_servo_pulsewidth(12, 500)
+    pi.set_PWM_frequency(12, 500)
     
 def closeValve():
-    pi.set_servo_pulsewidth(12, 1300)
+    pi.set_PWM_frequency(12, 1300)
 
 def mix(drinkName):
     if drinkName == "Water":
