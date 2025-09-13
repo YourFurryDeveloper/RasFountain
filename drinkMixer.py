@@ -2,13 +2,19 @@ import pigpio
 import time
 
 pi = pigpio.pi()
-pi.set_mode(23, pigpio.OUTPUT)
+pi.set_mode(12, pigpio.OUTPUT)
+
+def openValve():
+    pi.set_servo_pulsewidth(12, 500)
+    
+def closeValve():
+    pi.set_servo_pulsewidth(12, 1300)
 
 def mix(drinkName):
     if drinkName == "Water":
-        pi.write(23, 1)
+        openValve()
         time.sleep(1)
-        pi.write(23, 0)
+        closeValve()
         
 def stopPumpD():
     pi.stop()

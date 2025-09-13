@@ -9,6 +9,8 @@ else:
     print("Go ahead! :3")
     os.system("sudo pigpiod")
 
+drinkMixer.closeValve()
+
 root = tk.Tk()
 root.title("The RasFountain")
 root.geometry("800x480")
